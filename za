@@ -1,0 +1,82 @@
+     // TASK 1 
+        List<Integer>arr= List.of(1,2,3,4,5,6);
+        List<Integer> list = arr.stream().filter(x -> x % 2 == 0).toList();
+        List<Integer> list1 = arr.stream().filter(x -> x % 2 != 0).toList();
+        System.out.println(list1);
+        System.out.println(list);
+
+// TASK 2
+public class Person {
+            private String name;
+            private int age;
+            public Person(String name, int age) {
+                this.name = name;
+                this.age = age;
+            }
+            public int getAge() {
+                return age;
+            }
+            @Override
+            public String toString() {
+                return "Person{" +
+                        "name='" + name + '\'' +
+                        ", age=" + age +
+                        '}';
+            }
+
+            public static void main(String[] args) {
+                List<Person> people = List.of(
+                        new Person("Alice", 30),
+                        new Person("Bob", 25),
+                        new Person("Charlie", 35)
+                );
+
+                Optional<Person> oldestPerson = people.stream()
+                        .max(Comparator.comparingInt(Person::getAge));
+                System.out.println(oldestPerson);
+                }
+            }
+
+// TASK 3
+        public class Person {
+            private String name;
+            private String course;
+
+            public Person(String name, String course) {
+                this.name = name;
+                this.course = course;
+            }
+
+            public String getCourse() {
+                return course;
+            }
+
+            public void setCourse(String course) {
+                this.course = course;
+            }
+
+            @Override
+            public String toString() {
+                return "Person{" +
+                        "name='" + name + '\'' +
+                        ", course='" + course + '\'' +
+                        '}';
+            }
+
+            public static void main(String[] args) {
+                List<Person> people = List.of(
+                        new Person("Alice", "Java"),
+                        new Person("Bob", "Js"),
+                        new Person("Charlie", "Java"),
+                        new Person("Lima","Js"));
+
+                people.stream().filter(x->x.getCourse().contains("Java")).forEach(System.out::println);
+                people.stream().filter(x->x.getCourse().contains("Js")).forEach(System.out::println);
+
+            }
+            }
+
+//TASK 4
+
+                System.out.println(people.stream().collect(Collectors.averagingDouble(Person::getHeight)));
+
